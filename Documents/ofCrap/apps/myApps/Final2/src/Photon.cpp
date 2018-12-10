@@ -2,7 +2,7 @@
 #include "ofMain.h"
 #include "Photon.h"
 #define PHOTON_LENGTH 100
-#define SLOWDOWN 0.7
+#define SLOWDOWN 0.75
 #define z_upper 30
 #define z_lower 2
 #define trail_length 1
@@ -36,13 +36,25 @@ void Photon::fall() {
 	//len += xspeed/len;
 
 	if (x <= -200) {
-		x = ofGetWindowWidth() + 50;
-		y = ofRandom(ofGetWindowHeight() - 30, 30);
-		z =      ofRandom(z_lower, z_upper);
-		xspeed = ofMap(z, z_lower, z_upper, 1, 2);
-		height = ofMap(z, z_lower, z_upper, 3, 15);
+//		x = ofGetWindowWidth() + 50;
+//		y = ofRandom(ofGetWindowHeight() - 30, 30);
+//		z =      ofRandom(z_lower, z_upper);
+//		xspeed = ofMap(z, z_lower, z_upper, 1, 2);
+//		height = ofMap(z, z_lower, z_upper, 3, 15);
+        reset();
 	}
 }
+
+void Photon::reset(){
+    x = ofGetWindowWidth() + 50;
+    y = ofRandom(ofGetWindowHeight()-30, 30);
+    z = ofRandom(z_lower, z_upper);
+    a = ofMap(z, z_lower, z_upper, 0, 100);
+    xspeed = ofMap(z, z_lower, z_upper, 1, 2);
+    height = ofMap(z, z_lower, z_upper, 3, 15);
+    ofSetColor(r, g, b, a);
+}
+    
 
 void Photon::show() {
 	

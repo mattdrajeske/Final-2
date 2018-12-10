@@ -19,6 +19,7 @@ public:
     float speedMult = 1;
     float x; //random starting location
 	float y; //random y location and start off screen
+    void reset();
    
 private:
 	

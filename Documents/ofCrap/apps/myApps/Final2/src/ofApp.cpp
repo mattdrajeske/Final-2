@@ -23,7 +23,7 @@ void ofApp::setup() {
 		photonPosition.x = p->GetX();//sets x for each point handled by the quad tree
 		photonPosition.y = p->GetY();//sets y for each point handled by the quad tree
 		photons.push_back(p);
-		qt->insert(photonPosition);//adds points to a vector that is a member data of the quad tree class
+		//qt->insert(photonPosition);//adds points to a vector that is a member data of the quad tree class
 		
 	}
 	
@@ -35,9 +35,8 @@ void ofApp::setup() {
 void ofApp::update() {
 	for(int i = 0; i < NUM_PHOTONS; i++){
         if(photons[i]->intersects(elec)){
-            photons[i]->speedMult += 0.06;
-            photons[i]->x = ofGetWindowWidth()+50;
-            photons[i]->y = ofRandom(738, 30);
+            photons[i]->speedMult += 0.08;
+            photons[i]->reset();
         }
     }
 }
